@@ -1,14 +1,27 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../store/cartSlice";
 
-const Product = ({ image, title, price, onPress }) => {
+const Product = ({ title, image, price, onPress }) => {
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    const product = { image, title, price };
+    console.log(
+      "🚀 ~ file: Product.jsx:11 ~ handleAddToCart ~ product:",
+      product
+    );
+    dispatch(addToCart(product));
+  };
+
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
       <Image source={{ uri: image }} style={styles.image} />
       <Text style={styles.title}>{title}</Text>
       <View style={styles.priceContainer}>
         <Text style={styles.price}>{price}</Text>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={handleAddToCart}>
           <Text style={styles.buttonText}>Add to Cart</Text>
         </TouchableOpacity>
       </View>
