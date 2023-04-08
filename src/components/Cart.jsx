@@ -18,7 +18,7 @@ const Cart = ({ cartItems }) => {
           <FlatList
             data={cartItems}
             renderItem={({ item }) => <CartItem item={item} />}
-            keyExtractor={(item) => item?.id?.toString()}
+            keyExtractor={(item) => item.id}
             contentContainerStyle={styles.cartItemsContainer}
           />
           <View style={styles.totalContainer}>

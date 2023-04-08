@@ -1,15 +1,18 @@
-import React from 'react';
-import { View, FlatList, StyleSheet } from 'react-native';
-import Product from './Product';
+import React from "react";
+import { View, FlatList, StyleSheet } from "react-native";
+import Product from "./Product";
 
 const ProductList = ({ products, onProductPress }) => {
   const renderItem = ({ item }) => (
-    <Product
-      image={item.image}
-      title={item.title}
-      price={item.price}
-      onPress={() => onProductPress(item)}
-    />
+    
+      <Product
+        image={item.image}
+        title={item.title}
+        price={item.price}
+        id={item.id}
+        onPress={() => onProductPress(item)}
+      />
+
   );
 
   return (
@@ -28,7 +31,7 @@ const ProductList = ({ products, onProductPress }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f2f2f2',
+    backgroundColor: "#f2f2f2",
   },
   contentContainer: {
     paddingTop: 10,

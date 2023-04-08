@@ -7,6 +7,10 @@ import { useRoute } from "@react-navigation/native";
 
 const ProductListScreen = ({ navigation }) => {
   const products = useSelector((state) => state.products.items);
+  console.log(
+    "🚀 ~ file: ProductListScreen.jsx:10 ~ ProductListScreen ~ products:",
+    products
+  );
   const route = useRoute();
   const title = route.params?.title;
 

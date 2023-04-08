@@ -3,11 +3,11 @@ import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../store/cartSlice";
 
-const Product = ({ title, image, price, onPress }) => {
+const Product = ({ id, title, image, price, onPress }) => {
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
-    const product = { image, title, price };
+    const product = { id, image, title, price };
     console.log(
       "🚀 ~ file: Product.jsx:11 ~ handleAddToCart ~ product:",
       product
