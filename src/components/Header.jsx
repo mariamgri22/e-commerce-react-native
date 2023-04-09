@@ -1,27 +1,34 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { useSelector } from "react-redux";
-import CartIcon from "./CartIcon";
-import { useNavigation } from "@react-navigation/native";
+import React, { useState } from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { useDispatch } from "react-redux";
+import { actions } from "../store/productsSlice";
+import { TextInput } from "react-native-web";
+import { Ionicons } from "@expo/vector-icons";
 
 const Header = () => {
-//  const cart = useSelector((state) => state.cart.items);
-//   console.log("🚀 ~ file: Header.jsx:8 ~ Header ~ cart:", cart);
+  const [searchText, setSearchText] = useState("");
+  const dispatch = useDispatch();
 
-//  const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
-//   console.log("🚀 ~ file: Header.jsx:11 ~ Header ~ itemCount:", itemCount);
-  const navigation = useNavigation();
+  const handleSearch = () => {
+    dispatch(actions.setSearchQuery(searchText));
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.leftContainer}>
         <Text style={styles.logo}>Logo</Text>
       </View>
-      <View style={styles.rightContainer}>
-        <Text style={styles.icon}>Menu Icon</Text>
-        <CartIcon onPress={() => navigation.navigate("Cart")} />
-      </View>
       <View style={styles.searchContainer}>
-        <Text style={styles.search}>Search Bar</Text>
+        <TextInput
+          style={styles.search}
+          placeholder="Search product"
+          value={searchText}
+          onChangeText={setSearchText}
+          onSubmitEditing={handleSearch}
+        />
+        <TouchableOpacity onPress={handleSearch}>
+          <Ionicons name="search" size={24} color="black" />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -30,37 +37,32 @@ const Header = () => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    justifyContent: "space-between",
     alignItems: "center",
-    paddingHorizontal: 20,
-    paddingVertical: 10,
+    justifyContent: "space-between",
     backgroundColor: "#fff",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: "#e2e2e2",
   },
-  leftContainer: {
-    flex: 1,
-  },
+  leftContainer: {},
   logo: {
     fontSize: 20,
     fontWeight: "bold",
   },
-  rightContainer: {
+  searchContainer: {
+    flex: 1,
     flexDirection: "row",
     alignItems: "center",
-  },
-  icon: {
-    fontSize: 16,
-    marginLeft: 10,
-  },
-  searchContainer: {
-    flex: 2,
+    backgroundColor: "#f2f2f2",
     marginLeft: 20,
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 10,
     paddingHorizontal: 10,
-    paddingVertical: 5,
+    borderRadius: 5,
   },
   search: {
+    flex: 1,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
     fontSize: 16,
   },
 });

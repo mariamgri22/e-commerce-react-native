@@ -22,7 +22,7 @@ const Product = ({ id, title, image, price, onPress }) => {
       <View style={styles.priceContainer}>
         <Text style={styles.price}>{price}</Text>
         <TouchableOpacity style={styles.button} onPress={handleAddToCart}>
-          <Text style={styles.buttonText}>Add to Cart</Text>
+          <Text style={styles.buttonText}>Add</Text>
         </TouchableOpacity>
       </View>
     </TouchableOpacity>

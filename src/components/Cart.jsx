@@ -1,14 +1,24 @@
 import React from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
 import CartItem from "./CartItem";
+import { useDispatch } from "react-redux";
+import { removeFromCart, updateQuantity } from "../store/cartSlice";
 
 const Cart = ({ cartItems }) => {
-  // console.log("🚀 ~ file: Cart.jsx:6 ~ Cart ~ cartItems:", cartItems);
-  // const totalPrice = cartItems.reduce(
-  //   (total, item) => total + item.price * item.quantity,
-  //   0
-  // );
-  // console.log("🚀 ~ file: Cart.jsx:11 ~ Cart ~ totalPrice:", totalPrice);
+  const dispatch = useDispatch();
+  const totalPrice = cartItems.reduce(
+    (accumulator, item) =>
+      accumulator + item.price.substring(1) * item.quantity,
+    0
+  );
+
+  const handleRemoveItem = (itemId) => {
+    dispatch(removeFromCart(itemId));
+  };
+
+  const handleUpdateQuantity = (itemId, newQuantity) => {
+    dispatch(updateQuantity({ itemId, quantity: newQuantity }));
+  };
 
   return (
     <View style={styles.container}>
@@ -17,13 +27,25 @@ const Cart = ({ cartItems }) => {
         <>
           <FlatList
             data={cartItems}
-            renderItem={({ item }) => <CartItem item={item} />}
+            renderItem={({ item }) => (
+              <CartItem
+                item={item}
+                onRemove={() => handleRemoveItem(item.id)}
+                onUpdateQuantity={(newQuantity) => {
+                  handleUpdateQuantity(item.id, newQuantity);
+                  console.log(
+                    "🚀 ~ file: Cart.jsx:40 ~ Cart ~ newQuantity:",
+                    newQuantity
+                  );
+                }}
+              />
+            )}
             keyExtractor={(item) => item.id}
             contentContainerStyle={styles.cartItemsContainer}
           />
           <View style={styles.totalContainer}>
             <Text style={styles.totalLabel}>Total:</Text>
-            {/* <Text style={styles.totalPrice}>${totalPrice}</Text> */}
+            <Text style={styles.totalPrice}>${totalPrice}</Text>
           </View>
         </>
       ) : (

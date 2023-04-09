@@ -7,14 +7,14 @@ const productsSlice = createSlice({
       {
         id: 1,
         image: "https://picsum.photos/400/300?random=1",
-        title: "Product 1",
+        title: "clothes 1",
         price: "$9.99",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       },
       {
         id: 2,
         image: "https://picsum.photos/400/300?random=2",
-        title: "Product 2",
+        title: "shoes 2",
         price: "$19.99",
         description:
           "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
@@ -30,7 +30,7 @@ const productsSlice = createSlice({
       {
         id: 4,
         image: "https://picsum.photos/400/300?random=4",
-        title: "Product 4",
+        title: "throueser 4",
         price: "$39.99",
         description:
           "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
@@ -52,6 +52,12 @@ const productsSlice = createSlice({
           "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
       },
     ],
+    searchQuery: "",
+  },
+  reducers: {
+    setSearchQuery: (state, action) => {
+      state.searchQuery = action.payload;
+    },
   },
 });
 

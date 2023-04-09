@@ -4,15 +4,13 @@ import Product from "./Product";
 
 const ProductList = ({ products, onProductPress }) => {
   const renderItem = ({ item }) => (
-    
-      <Product
-        image={item.image}
-        title={item.title}
-        price={item.price}
-        id={item.id}
-        onPress={() => onProductPress(item)}
-      />
-
+    <Product
+      image={item.image}
+      title={item.title}
+      price={item.price}
+      id={item.id}
+      onPress={() => onProductPress(item)}
+    />
   );
 
   return (
