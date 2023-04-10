@@ -1,6 +1,6 @@
 import { Animated, FlatList, StyleSheet, Text, View } from "react-native";
 import React, { useRef, useState } from "react";
-import Slides from "./data";
+import Slides from "../utility/data";
 import SlideItem from "./SliderItem";
 import Pagination from "./Pagination";
 
