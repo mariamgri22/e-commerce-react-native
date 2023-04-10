@@ -5,8 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import { logout } from "../store/userSlice";
 
 const Profile = () => {
-  const user = useSelector((state) => state.user.user);
-  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+  const {user, isLoggedIn} = useSelector((state) => state.user);
   const navigation = useNavigation();
   const dispatch = useDispatch();
 

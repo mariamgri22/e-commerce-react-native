@@ -8,16 +8,12 @@ const Cart = ({ cartItems }) => {
   const dispatch = useDispatch();
   const totalPrice = cartItems.reduce(
     (accumulator, item) =>
-      accumulator + item.price.substring(1) * item.quantity,
+      accumulator + item.price.substring(1) * item.quantity, // FIXME:
     0
   );
 
   const handleRemoveItem = (itemId) => {
     dispatch(removeFromCart(itemId));
-  };
-
-  const handleUpdateQuantity = (itemId, newQuantity) => {
-    dispatch(updateQuantity({ itemId, quantity: newQuantity }));
   };
 
   return (

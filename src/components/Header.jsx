@@ -1,8 +1,13 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  TextInput,
+} from "react-native";
 import { useDispatch } from "react-redux";
 import { actions } from "../store/productsSlice";
-import { TextInput } from "react-native-web";
 import { Ionicons } from "@expo/vector-icons";
 
 const Header = () => {

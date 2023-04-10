@@ -9,27 +9,28 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    login: (state, action) => {
-      state.user = action.payload;
+    login: (state, {payload}) => {
+      state.user = payload;
       state.isLoggedIn = true;
     },
     logout: (state) => {
       state.user = null;
       state.isLoggedIn = false;
     },
-    register: (state, action) => {
-      const { name, email, password } = action.payload;
-      state.user = {
-        name,
-        email,
-        password,
-      };
+    register: (state, {payload}) => {
+      // const { name, email, password } = payload;
+      // state.user = {
+      //   name,
+      //   email,
+      //   password,
+      // };
+      state.user = payload
       state.isLoggedIn = true;
     },
-    updateProfile: (state, action) => {
+    updateProfile: (state, {payload}) => {
       state.user = {
         ...state.user,
-        ...action.payload,
+        ...payload,
       };
     },
   },

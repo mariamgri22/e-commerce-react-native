@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     alignItems: "center",
     height: 50,
-    position: "sticky",
+    position: "absolute",
     bottom: 0,
     left: 0,
     right: 0,

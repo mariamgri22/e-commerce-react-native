@@ -11,6 +11,17 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  // const [formData, setFormData] = useState({
+
+  // })
+
+  // const handleFormChanges = (key) => (e) => {
+  //   setFormData({
+  //     ...data,
+  //     [key]: e.target.value
+  //   })
+  // }
+
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
@@ -32,6 +43,9 @@ const Register = () => {
 
     dispatch(register({ name, email, password }));
 
+    // set data to local storage
+
+     
     setName("");
     setEmail("");
     setPassword("");

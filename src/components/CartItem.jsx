@@ -1,13 +1,18 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { useDispatch } from "react-redux";
+import { updateQuantity } from "../store/cartSlice";
 
 const CartItem = ({ item, onRemove, onUpdateQuantity }) => {
+  const dispatch = useDispatch()
+  
   const handleRemove = () => {
     onRemove(item.id);
   };
 
-  const handleUpdateQuantity = (value) => {
-    onUpdateQuantity(item.id, value);
+  const handleUpdateQuantity = (value) => () => {
+    console.log(item.quantity)
+    dispatch(updateQuantity({itemId: item.id, quantity: value}))
   };
 
   return (
@@ -19,13 +24,13 @@ const CartItem = ({ item, onRemove, onUpdateQuantity }) => {
         <View style={styles.quantityContainer}>
           <Text style={styles.quantityLabel}>Quantity:</Text>
           <TouchableOpacity
-            onPress={() => handleUpdateQuantity(item.quantity - 1)}
+            onPress={handleUpdateQuantity(item.quantity - 1)}
           >
             <Text style={styles.quantityButton}>-</Text>
           </TouchableOpacity>
           <Text style={styles.quantity}>{item.quantity}</Text>
           <TouchableOpacity
-            onPress={() => handleUpdateQuantity(item.quantity + 1)}
+            onPress={handleUpdateQuantity(item.quantity + 1)}
           >
             <Text style={styles.quantityButton}>+</Text>
           </TouchableOpacity>

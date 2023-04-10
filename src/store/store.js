@@ -3,14 +3,12 @@ import { reducer as productsReducer } from "./productsSlice";
 import { reducer as cartReducer } from "./cartSlice";
 import { reducer as userReducer } from "./userSlice";
 
-const rootReducer = combineReducers({
-  products: productsReducer,
-  cart: cartReducer,
-  user: userReducer,
-});
-
 const store = configureStore({
-  reducer: rootReducer,
+  reducer: {
+    products: productsReducer,
+    cart: cartReducer,
+    user: userReducer,
+  },
 });
 
 export default store;
