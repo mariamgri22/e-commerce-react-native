@@ -7,12 +7,14 @@ import ProfileScreen from "../screens/ProfileScreen";
 import { createStackNavigator } from "@react-navigation/stack";
 import LoginScreen from "../screens/LoginScreen";
 import RegisterScreen from "../screens/RegisterSreen";
+import HomeScreen from "../screens/HomeSceen";
 
 const Stack = createStackNavigator();
 export default function MainNavigator() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="ProductList">
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen}  options={{ headerShown: false }} />
         <Stack.Screen name="ProductList" component={ProductListScreen} />
         <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
         <Stack.Screen name="Cart" component={CartScreen} />
