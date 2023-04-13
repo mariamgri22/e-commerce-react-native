@@ -31,7 +31,7 @@ const SlideItem = ({ item }) => {
   return (
     <View style={styles.container}>
       <Animated.Image
-        source={item.img}
+        source={item.image}
         resizeMode="contain"
         style={[
           styles.image,

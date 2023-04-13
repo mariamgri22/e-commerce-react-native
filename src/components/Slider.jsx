@@ -1,10 +1,11 @@
 import { Animated, FlatList, StyleSheet, Text, View } from "react-native";
 import React, { useRef, useState } from "react";
-import Slides from "../utility/data";
 import SlideItem from "./SliderItem";
 import Pagination from "./Pagination";
+import { useSelector } from "react-redux";
 
 const Slider = () => {
+  const products=useSelector(state=>state.products.items)
   const [index, setIndex] = useState(0);
   const scrollX = useRef(new Animated.Value(0)).current;
 
@@ -37,7 +38,7 @@ const Slider = () => {
   return (
     <View>
       <FlatList
-        data={Slides}
+        data={products}
         renderItem={({ item }) => <SlideItem item={item} />}
         horizontal
         pagingEnabled
@@ -47,7 +48,7 @@ const Slider = () => {
         onViewableItemsChanged={handleOnViewableItemsChanged}
         viewabilityConfig={viewabilityConfig}
       />
-      <Pagination data={Slides} scrollX={scrollX} index={index} />
+      <Pagination data={products} scrollX={scrollX} index={index} />
     </View>
   );
 };
